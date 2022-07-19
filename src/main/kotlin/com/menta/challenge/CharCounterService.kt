@@ -8,6 +8,8 @@ import java.util.Locale
 class CharCounterService(
     @Value("\${char-counter.default-locale}")
     private val defaultLocale: Locale,
+    @Value("\${char-counter.skip-chars}")
+    private val skipChars: Set<Char>,
     private val charMapper: CharmapGenerator
 ) {
 
@@ -18,11 +20,13 @@ class CharCounterService(
     fun countClosedSpaces(text: String, locale: Locale = defaultLocale): Int {
         val closedSpacesByChar: Map<Char, Int> = charMapper.getCharMapForLocale(defaultLocale)
         return text
-            .mapIndexed { index, char ->
+            .withIndex()
+            .filterNot { (_, value) ->
+                skipChars.contains(value)
+            }.sumOf { (index, char) ->
                 val count = closedSpacesByChar[char]
                 count ?: throw InvalidCharacterException(char, index)
             }
-            .sum()
     }
 
 }

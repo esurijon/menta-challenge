@@ -1,10 +1,9 @@
 char-counter:
   default-locale: es-AR
+  skip-chars: " "
   mappings-by-locale:
     es-AR:
-      abc: 1
-      def: 2
-    fr-Fr:
-      abc: 1
-      def: 2
+      - "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
+      - "469aábdeégijoópqAÁDOÓPQR@#&?¿",
+      - "08B%"
 

@@ -10,15 +10,15 @@ class CharCounterServiceTest {
     private val charMapper: CharmapGenerator = CharmapGenerator(
         CharmapGeneratorConfig(
             mapOf(
-                locale to mapOf(
-                    "abcdefghijklmn" to 0,
-                    "abcdefghijklmn" to 1,
-                    "abcdefghijklmn" to 2,
+                locale to listOf(
+                    "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
+                    "469aábdeégijoópqAÁDOÓPQR@#&?¿",
+                    "08B%"
                 )
             )
         )
     )
-    private val charCounterService = CharCounterService(locale, charMapper)
+    private val charCounterService = CharCounterService(locale, setOf(' '), charMapper)
 
     @Test
     fun `GIVEN a char counter WHEN counting a valid text THEN return expected count`() {

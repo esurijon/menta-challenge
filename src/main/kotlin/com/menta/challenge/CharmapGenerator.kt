@@ -1,6 +1,5 @@
 package com.menta.challenge
 
-import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Service
 import java.util.Locale
 
@@ -8,10 +7,10 @@ import java.util.Locale
 class CharmapGenerator(
     charmapGeneratorConfig: CharmapGeneratorConfig = CharmapGeneratorConfig(
         mapOf(
-            Locale("es", "AR") to mapOf(
-                "abcdefghijklmn" to 0,
-                "abcdefghijklmn" to 1,
-                "abcdefghijklmn" to 2,
+            Locale("es", "AR") to listOf(
+                "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
+                "469aábdeégijoópqAÁDOÓPQR@#&?¿",
+                "08B%"
             )
         )
     )
@@ -24,8 +23,8 @@ class CharmapGenerator(
         }
     }
 
-    private fun mappingToCharMap(mapping: Map<String, Int>): Map<Char, Int> = mapping
-        .flatMap { (chars, count) ->
+    private fun mappingToCharMap(mapping: List<String>): Map<Char, Int> = mapping
+        .flatMapIndexed { count, chars ->
             chars.map {  it to count }
         }
         .toMap()
@@ -37,7 +36,7 @@ class CharmapGenerator(
 
 //@ConfigurationProperties(prefix = "char-counter.mappings-by-locale")
 data class CharmapGeneratorConfig(
-    val mappingsByLocale: Map<Locale, Map<String, Int>>
+    val mappingsByLocale: Map<Locale, List<String>>
 )
 
 class InvalidLocaleExcpetion(val locale: Locale)
