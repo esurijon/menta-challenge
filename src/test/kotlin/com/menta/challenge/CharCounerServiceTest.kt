@@ -23,7 +23,7 @@ class CharCounterServiceTest {
     @Test
     fun `GIVEN a char counter WHEN counting a valid text THEN return expected count`() {
         val count = charCounterService.countClosedSpaces("El 37% de los humanos está bancarizado")
-        Assertions.assertEquals(15, count)
+        Assertions.assertEquals(16, count)
     }
 
     @Test
