@@ -1,9 +1,12 @@
 char-counter:
   default-locale: es-AR
   skip-chars: " "
-  mappings-by-locale:
-    es-AR:
-      - "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
-      - "469aábdeégijoópqAÁDOÓPQR@#&?¿",
-      - "08B%"
-
+  mappings-by-locale: |
+    { "es-AR" : 
+      [
+        "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
+        "469aábdeégijoópqAÁDOÓPQR@#&?¿",
+        "08B%∞",
+        "‰"
+      ] 
+    }

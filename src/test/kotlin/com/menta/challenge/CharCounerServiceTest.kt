@@ -7,16 +7,16 @@ import java.util.Locale
 class CharCounterServiceTest {
 
     private val locale = Locale("es","AR")
-    private val charMapper: CharmapGenerator = CharmapGenerator(
-        CharmapGeneratorConfig(
-            mapOf(
-                locale to listOf(
-                    "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
-                    "469aábdeégijoópqAÁDOÓPQR@#&?¿",
-                    "08B%"
-                )
-            )
-        )
+    private val charMapper: CharmapGenerator = CharmapGenerator("""
+    { "es-AR" : 
+      [
+        "123457cfhíklmnñrstuúvwxyzCEÉFGHIÍJKLMNÑSTUÚVWXYZ#/()=_-",
+        "469aábdeégijoópqAÁDOÓPQR@#&?¿",
+        "08B%∞",
+        "‰"
+      ] 
+    }        
+    """.trimIndent()
     )
     private val charCounterService = CharCounterService(locale, setOf(' '), charMapper)
 

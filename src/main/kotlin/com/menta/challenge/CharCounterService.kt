@@ -9,9 +9,11 @@ class CharCounterService(
     @Value("\${char-counter.default-locale}")
     private val defaultLocale: Locale,
     @Value("\${char-counter.skip-chars}")
-    private val skipChars: Set<Char>,
+    skipChars: String,
     private val charMapper: CharmapGenerator
 ) {
+
+    private val skipChars = skipChars.toSet()
 
     init {
         charMapper.getCharMapForLocale(defaultLocale)
