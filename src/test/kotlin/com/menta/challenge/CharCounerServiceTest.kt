@@ -18,7 +18,7 @@ class CharCounterServiceTest {
     }        
     """.trimIndent()
     )
-    private val charCounterService = CharCounterService(locale, setOf(' '), charMapper)
+    private val charCounterService = CharCounterService(locale, " ", charMapper)
 
     @Test
     fun `GIVEN a char counter WHEN counting a valid text THEN return expected count`() {
