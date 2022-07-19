@@ -1,0 +1,10 @@
+char-counter:
+  default-locale: es-AR
+  mappings-by-locale:
+    es-AR:
+      abc: 1
+      def: 2
+    fr-Fr:
+      abc: 1
+      def: 2
+
